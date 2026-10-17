@@ -10,8 +10,8 @@
 # 0) 前置：隔离环境（不触碰 ~/.dsh），确保 cua-driver 已安装并在 PATH 或 CUA_DRIVER_BIN 指定
 export DSH_HOME=$(mktemp -d /tmp/dsh-cu-profile-XXXXXX)
 
-# 1) 安装（方式 A：GitHub 包 / 本地目录均可）
-npm install -g github:AndroidSix/dsh-computer-use-ng   # 或 dsh plugin --profile cu-demo add /path/to/dsh-computer-use-ng
+# 1) 安装（方式 A：npm 包 / 本地目录均可）
+npm install -g dsh-computer-use-ng   # 或 dsh plugin --profile cu-demo add /path/to/dsh-computer-use-ng
 
 # 2) 启动冒烟：Profile 应正常启动；工具注册表出现
 #    screen_observe / computer_click / computer_type / app_list 等 12 个工具

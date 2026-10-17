@@ -5,6 +5,8 @@
 > **Give DeepSeek Harness a safe, observable Computer Use layer.** Observe desktop applications, locate UI elements, and act through an isolated virtual cursor.
 
 [![CI](https://github.com/AndroidSix/dsh-computer-use-ng/actions/workflows/ci.yml/badge.svg)](https://github.com/AndroidSix/dsh-computer-use-ng/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/dsh-computer-use-ng)](https://www.npmjs.com/package/dsh-computer-use-ng)
+[![npm downloads](https://img.shields.io/npm/dw/dsh-computer-use-ng)](https://www.npmjs.com/package/dsh-computer-use-ng)
 [![GitHub stars](https://img.shields.io/github/stars/AndroidSix/dsh-computer-use-ng)](https://github.com/AndroidSix/dsh-computer-use-ng)
 [![License](https://img.shields.io/github/license/AndroidSix/dsh-computer-use-ng)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22.18.0-339933)](https://nodejs.org/)
@@ -27,7 +29,7 @@
 |---|---|---|
 | **harness-desktop** | 开箱即用的 DeepSeek Harness 桌面客户端 · Ready-to-use desktop client | [下载 / Download](https://github.com/988hj7tczd-oss/harness-desktop/releases) |
 | **AI House** | 发现 AI 工具、模型和 Agent · Discover AI tools and agents | [工具中心 / Tools](https://www.aibunkhouse.com/tools) |
-| **GitHub 安装** | npm 发布前使用 GitHub 安装 · Install from GitHub before the npm release | [dsh-computer-use-ng](https://github.com/AndroidSix/dsh-computer-use-ng) |
+| **npm** | 安装和查看包信息 · Install and inspect the package | [dsh-computer-use-ng](https://www.npmjs.com/package/dsh-computer-use-ng) |
 | **awesome-dsh-plugin** | 发现更多 DeepSeek Harness 插件 · Discover more plugins | [Plugin list](https://github.com/988hj7tczd-oss/awesome-dsh-plugin) |
 | **上游项目** | 原始项目与历史版本 · Original project and historical releases | [dsh-computer-use](https://github.com/988hj7tczd-oss/dsh-computer-use) |
 
@@ -37,7 +39,7 @@
 - 工具名（`screen_observe`、`computer_click` 等）保持不变，已有提示词和工作流无需改写。
 - 本仓库从新的 Git 历史开始，不包含上游的提交历史或内部项目文档；MIT 署名见 [NOTICE](NOTICE)。
 - 问题反馈、功能请求和 PR 请提到本仓库，而不是上游仓库。
-- npm 包名 `dsh-computer-use-ng` 尚未发布；发布前请使用 GitHub 安装。
+- npm 包名 `dsh-computer-use-ng`，发布账号 `androidsup`；也可以用固定版本 `dsh-computer-use-ng@0.4.0`。
 
 ---
 
@@ -132,8 +134,14 @@ flowchart LR
 # 如果装过旧版 dsh-computer-use，先卸载，避免同名工具重复注册
 dsh plugin --profile desktop remove dsh-computer-use
 
-# 从本仓库安装
-dsh plugin --profile desktop add github:AndroidSix/dsh-computer-use-ng
+# 从 npm 安装（推荐）
+dsh plugin --profile desktop add dsh-computer-use-ng
+
+# 或固定版本
+dsh plugin --profile desktop add dsh-computer-use-ng@0.4.0
+
+# 或直接从 GitHub 固定 tag 安装
+dsh plugin --profile desktop add github:AndroidSix/dsh-computer-use-ng#v0.4.0
 ```
 
 安装完成后重启 DSH，或在插件页确认 `dsh-computer-use-ng` 已启用。
@@ -186,10 +194,8 @@ export DSH_HOME="/path/to/your/dsh-home"
 
 ### 方式四：npm 包
 
-当前尚未发布到 npm。发布前请从 GitHub 安装：
-
 ```bash
-npm install -g github:AndroidSix/dsh-computer-use-ng
+npm install -g dsh-computer-use-ng
 ```
 
 安装后仍需要让 DSH profile 加载该 bundle，并确认 `cua-driver` 已经安装且在 `PATH` 中，或设置：
@@ -421,6 +427,7 @@ DSH_HOME=$PWD/.dsh-p0 ELECTRON_RUN_AS_NODE=1 \
 - [awesome-dsh-plugin](https://github.com/988hj7tczd-oss/awesome-dsh-plugin)：DeepSeek Harness 插件精选列表；
 - [AI House 工具中心](https://www.aibunkhouse.com/tools)：发现更多 AI 工具、模型和 Agent；
 - [cua-driver](https://github.com/trycua/cua)：底层跨平台桌面驱动；
+- [npm package](https://www.npmjs.com/package/dsh-computer-use-ng)：安装包和版本信息；
 - [GitHub 仓库](https://github.com/AndroidSix/dsh-computer-use-ng)：本维护分支的源码与 issue；
 - [上游项目](https://github.com/988hj7tczd-oss/dsh-computer-use)：原始项目与历史版本。
 
@@ -478,7 +485,14 @@ It can inspect desktop windows, expose actionable AX/UIA elements, use a screens
 # Remove the original plugin first if it is installed, to avoid duplicate tool names.
 dsh plugin --profile desktop remove dsh-computer-use
 
-dsh plugin --profile desktop add github:AndroidSix/dsh-computer-use-ng
+# Install from npm
+dsh plugin --profile desktop add dsh-computer-use-ng
+
+# Or pin a version
+dsh plugin --profile desktop add dsh-computer-use-ng@0.4.0
+
+# Or install from the GitHub tag
+dsh plugin --profile desktop add github:AndroidSix/dsh-computer-use-ng#v0.4.0
 ```
 
 Restart DSH, or confirm in the Plugins page that `dsh-computer-use-ng` is enabled.
@@ -506,10 +520,10 @@ export DSH_HOME="/path/to/your/dsh-home"
 ./install.sh
 ```
 
-### Install from GitHub (npm not published yet)
+### Install the npm package
 
 ```bash
-npm install -g github:AndroidSix/dsh-computer-use-ng
+npm install -g dsh-computer-use-ng
 ```
 
 Make sure the host loads the bundle and that `cua-driver` is available in `PATH`, or set `CUA_DRIVER_BIN` to its absolute path.
@@ -677,6 +691,7 @@ The runtime verification requires a working `harness-desktop` installation and `
 - [awesome-dsh-plugin](https://github.com/988hj7tczd-oss/awesome-dsh-plugin) — a curated list of DeepSeek Harness plugins;
 - [AI House Tools](https://www.aibunkhouse.com/tools) — discover AI tools, models, and agents;
 - [cua-driver](https://github.com/trycua/cua) — the underlying cross-platform desktop driver;
+- [npm package](https://www.npmjs.com/package/dsh-computer-use-ng) — package versions and downloads;
 - [GitHub repository](https://github.com/AndroidSix/dsh-computer-use-ng) — source and issue tracker for this maintained branch;
 - [Upstream project](https://github.com/988hj7tczd-oss/dsh-computer-use) — the original project and historical releases.
 
