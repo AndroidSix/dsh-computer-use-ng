@@ -52,6 +52,12 @@ if [ -f "$PROFILE_DIR/package.json" ] && grep -q '"dsh-computer-use-ng"' "$PROFI
   exit 1
 fi
 
+if [ -f "$PROFILE_DIR/package.json" ] && grep -q '"dsh-computer-use"' "$PROFILE_DIR/package.json"; then
+  echo "错误: profile 仍安装旧版 dsh-computer-use，会与 dsh-computer-use-ng 重复注册同名工具。"
+  echo "      请先运行: dsh plugin --profile $PROFILE remove dsh-computer-use"
+  exit 1
+fi
+
 # 1. 链接插件包到 profile 的 node_modules（加载器从 profile node_modules 解析插件名）
 if [ "$DRY_RUN" = 1 ]; then
   echo "  [dry-run] ln -sfn $SRC -> $NM_DIR/dsh-computer-use-ng"
