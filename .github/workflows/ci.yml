@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: JS syntax check (node --check)
+        run: |
+          for f in index.js lib/*.js; do node --check "$f"; done
+
+      - name: Shell syntax check (bash -n)
+        run: |
+          bash -n install.sh
+          bash -n uninstall.sh
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Package checks
+        run: npm run check
+
+      - name: Check whitespace errors
+        run: git diff --check
+
+      - name: Theme generator sanity (make_theme.py)
+        run: |
+          python3 tools/make_theme.py --output /tmp/theme.lottie
+          python3 -c "import zipfile,json; z=zipfile.ZipFile('/tmp/theme.lottie'); assert json.loads(z.read('cua/theme.json'))['id']=='com.dsh.computeruse.rainbow'; print('theme OK')"

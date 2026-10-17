@@ -1,0 +1,10 @@
+# dsh-computer-use-ng bundle patch：把 Computer Use 插件插入 profile。
+#
+# 作为 dsh.bundle.patch 被 dsh 加载器消费。insert 引用本包（dsh-computer-use-ng），
+# 加载器会从 profile 的 node_modules 解析它并加载为 Cordis 插件。
+- insert:
+    - id: dsh-computer-use-ng
+      name: dsh-computer-use-ng
+      config:
+        ttlMs: 30000
+        maxElements: 500

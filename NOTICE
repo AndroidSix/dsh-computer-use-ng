@@ -1,0 +1,38 @@
+# NOTICE
+
+创建于 2026-10-17
+
+`dsh-computer-use-ng` 是 `dsh-computer-use` 的社区维护分支。
+
+- 原始项目：https://github.com/988hj7tczd-oss/dsh-computer-use
+- 原作者：Wei Jerry 及原始项目贡献者
+- 导入基线：`3cf9bd8ae60271512f263bfa75485cb242ca0892`
+- 许可证：MIT，见 [LICENSE](LICENSE)
+
+本仓库从新的 Git 历史开始，不包含原始仓库的提交历史或内部项目文档。
+
+本项目与原作者、DeepSeek 官方均无隶属关系。原始项目的版权声明与 MIT 许可以下条款继续适用：
+
+```text
+MIT License
+
+Copyright (c) 2026 dsh-computer-use contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
