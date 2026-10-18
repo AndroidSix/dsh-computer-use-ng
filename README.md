@@ -421,6 +421,42 @@ DSH_HOME=$PWD/.dsh-p0 ELECTRON_RUN_AS_NODE=1 \
 - [Store 安装证据](docs/store-evidence.md)
 - [运行时验证脚本](verify-runtime.mjs)
 
+## 自动发版到 npm
+
+仓库的 [`.github/workflows/publish.yml`](.github/workflows/publish.yml) 在 **GitHub Release 发布时**运行：
+
+1. 校验 `v版本号` 与 `package.json`、`package-lock.json` 两处版本一致（`scripts/check-release-version.mjs`）；
+2. `npm ci` 安装依赖，运行 `npm test` 与 `npm run check`，并做主题生成器冒烟检查；
+3. `npm pack` 只打包 `files` 白名单内的文件，并把产物附加到 GitHub Release；
+4. 通过 **npm Trusted Publishing** 发布（自动生成 provenance 签名，仓库中不需要 `NPM_TOKEN`）。
+
+普通提交不会触发发布，草稿状态的 Release 也不会发布。稳定版本发布到 npm `latest`，预发布版本（如 `0.5.0-rc.1`）发布到 `next`。
+
+日常更新流程：
+
+```bash
+# 1. 修改 package.json 的 version，并同步 package-lock.json
+npm install --package-lock-only
+
+# 2. 本地校验版本一致性（可选带 tag 参数）
+npm run check:release -- v0.4.1
+
+# 3. 提交并推送 main，然后基于该提交创建 v0.4.1 的 GitHub Release
+```
+
+也可以手动在 Actions 中触发 `Publish to npm`，输入已存在的 tag 重试。已经成功发布的 npm 版本不能重复发布，失败后请先修复原因再重试。
+
+不想走 GitHub Release 时，可用本地脚本发布（需已 `npm login`）：
+
+```bash
+npm run publish:npm:dry   # 只打印将执行的步骤，不打包、不上传
+npm run publish:npm       # 校验 → 测试 → 打包 → 发布
+```
+
+> 本地发布同样会生成 provenance，但签名者会是你的本机环境；推荐优先使用 GitHub Release 通道。
+
+**首次配置**：在 npm 上打开包的 Settings → Trusted Publisher，选择 GitHub Actions，填写所有者为 `AndroidSix`、仓库 `dsh-computer-use-ng`、工作流文件名 `publish.yml`，环境名称留空，权限允许 `npm publish`。
+
 ## 相关项目
 
 - [harness-desktop](https://github.com/988hj7tczd-oss/harness-desktop)：开箱即用的 DeepSeek Harness 桌面客户端；

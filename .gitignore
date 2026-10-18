@@ -10,6 +10,9 @@ node_modules
 .zhipu-key
 *.key
 
+# 发布产物
+*.tgz
+
 # 系统
 .DS_Store
 dsh-computer-use.md

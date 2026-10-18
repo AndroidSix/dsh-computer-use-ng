@@ -1,6 +1,6 @@
 {
   "name": "dsh-computer-use-ng",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "dsh-computer-use 社区维护分支：虚拟鼠标真人操作 + 原生视觉模型直读，screen_observe 等 12 个模型友好工具",
   "type": "module",
   "main": "index.js",
@@ -35,6 +35,7 @@
     "index.js",
     "lib/",
     "tools/",
+    "scripts/",
     "cordis.patch.yml",
     "README.md",
     "VERIFICATION.md",
@@ -47,7 +48,10 @@
   ],
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check index.js && node --check lib/*.js && bash -n install.sh && bash -n uninstall.sh"
+    "check": "node --check index.js && node --check lib/*.js && node --check scripts/*.mjs && bash -n install.sh && bash -n uninstall.sh",
+    "check:release": "node scripts/check-release-version.mjs",
+    "publish:npm": "node scripts/publish.mjs",
+    "publish:npm:dry": "node scripts/publish.mjs --dry-run"
   },
   "peerDependencies": {
     "@deepseek-ai/dsh-tools": ">=0.1.2-rc.1 <0.2.0-0 || >=0.2.0-rc.1 <0.3.0-0",
