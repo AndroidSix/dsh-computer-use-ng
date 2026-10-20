@@ -134,8 +134,11 @@ flowchart LR
 # 如果装过旧版 dsh-computer-use，先卸载，避免同名工具重复注册
 dsh plugin --profile desktop remove dsh-computer-use
 
-# 从 npm 安装（推荐）
+# 从 npm 安装（推荐，desktop profile）
 dsh plugin --profile desktop add dsh-computer-use-ng
+
+# Web profile 同样一条命令
+dsh plugin --profile web add dsh-computer-use-ng
 
 # 或固定版本
 dsh plugin --profile desktop add dsh-computer-use-ng@0.4.0
@@ -143,6 +146,8 @@ dsh plugin --profile desktop add dsh-computer-use-ng@0.4.0
 # 或直接从 GitHub 固定 tag 安装
 dsh plugin --profile desktop add github:AndroidSix/dsh-computer-use-ng#v0.4.0
 ```
+
+也可以直接在 DSH 的 **插件页 → 添加插件** 里输入包名 `dsh-computer-use-ng`。
 
 安装完成后重启 DSH，或在插件页确认 `dsh-computer-use-ng` 已启用。
 
@@ -523,6 +528,9 @@ dsh plugin --profile desktop remove dsh-computer-use
 
 # Install from npm
 dsh plugin --profile desktop add dsh-computer-use-ng
+
+# The same command works for the web profile
+dsh plugin --profile web add dsh-computer-use-ng
 
 # Or pin a version
 dsh plugin --profile desktop add dsh-computer-use-ng@0.4.0
