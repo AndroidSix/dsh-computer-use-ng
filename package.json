@@ -7,6 +7,8 @@
   "license": "MIT",
   "keywords": [
     "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
     "computer-use",
     "cua-driver",
     "harness-desktop",
@@ -15,6 +17,19 @@
   "dsh": {
     "bundle": {
       "patch": "cordis.patch.yml"
+    },
+    "catalog": {
+      "category": "tool",
+      "summary": {
+        "en": "Computer Use for DeepSeek Harness: observe windows, locate AX elements, and act through an isolated virtual cursor with 12 model-friendly tools.",
+        "zh": "DeepSeek Harness 的 Computer Use 插件：观察窗口、定位 AX 元素，用独立虚拟光标点击输入，提供 12 个模型友好工具。"
+      },
+      "capabilities": [
+        "dsh-tools",
+        "spawn-cua-driver",
+        "screen-observe",
+        "glm-vision-fallback"
+      ]
     },
     "compatibility": {
       "node": ">=22.18.0",
